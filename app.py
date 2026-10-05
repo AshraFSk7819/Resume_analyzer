@@ -20,7 +20,6 @@ from resume_analyzer import analyze_resume
 
 st.set_page_config(
     page_title="AI Resume & Candidate Fit Analyzer",
-    page_icon="🎯",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
@@ -35,122 +34,101 @@ st.markdown(
 <style>
 /* Base Theme & Layout */
 .stApp {
-    background: #090d16;
-    color: #e2e8f0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .block-container {
     max-width: 1200px;
-    padding-top: 2rem;
+    padding-top: 2.5rem;
     padding-bottom: 5rem;
 }
 
-/* Header Section */
+/* Hero / Header Section */
 .hero-container {
-    background: linear-gradient(135deg, #111827 0%, #1e1b4b 100%);
-    border: 1px solid rgba(99, 102, 241, 0.2);
-    border-radius: 16px;
-    padding: 2rem 2.2rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    background: #18181B;
+    border: 1px solid #3F3F46;
+    border-radius: 8px;
+    padding: 2rem 2.5rem;
+    margin-bottom: 2.5rem;
 }
 
 .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(99, 102, 241, 0.15);
-    border: 1px solid rgba(99, 102, 241, 0.3);
-    color: #a5b4fc;
+    display: inline-block;
+    color: #93C5FD;
     font-size: 0.75rem;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 4px 10px;
-    border-radius: 9999px;
+    letter-spacing: 0.05em;
     margin-bottom: 0.75rem;
 }
 
 .hero-title {
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: #ffffff;
-    letter-spacing: -0.02em;
-    margin: 0 0 0.4rem 0;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #FAFAFA;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.5rem 0;
     line-height: 1.2;
 }
 
 .hero-subtitle {
-    color: #94a3b8;
-    font-size: 1rem;
+    color: #A1A1AA;
+    font-size: 0.95rem;
     margin: 0;
     line-height: 1.5;
+    max-width: 800px;
 }
 
 /* Section Headings */
 .section-title {
-    font-size: 0.8rem;
-    font-weight: 700;
+    font-size: 0.85rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.09em;
-    color: #94a3b8;
-    margin-bottom: 0.6rem;
+    letter-spacing: 0.05em;
+    color: #A1A1AA;
+    margin-bottom: 0.75rem;
     display: flex;
     align-items: center;
-    gap: 6px;
+    border-bottom: 1px solid #3F3F46;
+    padding-bottom: 0.5rem;
 }
 
-/* Input Fields */
+/* Input Fields overrides */
 textarea {
-    background: #0f172a !important;
-    color: #f1f5f9 !important;
-    border: 1px solid #1e293b !important;
-    border-radius: 10px !important;
-    font-size: 0.92rem !important;
-}
-
-textarea:focus {
-    border-color: #6366f1 !important;
-    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25) !important;
+    border-radius: 6px !important;
 }
 
 [data-testid="stFileUploader"] {
-    background: #0f172a;
-    border: 1px dashed #334155;
-    border-radius: 10px;
-    padding: 0.5rem;
+    border-radius: 6px;
+    padding: 1rem;
 }
 
-/* Primary Button */
+/* Primary Button - Clean Corporate Look */
 .stButton > button {
-    height: 48px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
-    border: 1px solid #818cf8;
-    color: #ffffff;
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.35);
+    height: 44px;
+    border-radius: 6px;
+    background: #FAFAFA;
+    border: 1px solid #E4E4E7;
+    color: #18181B;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.15s ease;
 }
 
 .stButton > button:hover {
-    background: linear-gradient(135deg, #4338ca 0%, #4f46e5 100%);
-    border-color: #a5b4fc;
-    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.45);
-    transform: translateY(-1px);
+    background: #E4E4E7;
+    border-color: #D4D4D8;
+    color: #18181B;
 }
 
 /* File Info Box */
 .file-info-badge {
-    background: #0f172a;
-    border: 1px solid #1e293b;
-    border-radius: 8px;
-    padding: 0.65rem 0.9rem;
-    margin-top: 0.6rem;
-    color: #cbd5e1;
+    background: #18181B;
+    border: 1px solid #3F3F46;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    margin-top: 0.5rem;
+    color: #D4D4D8;
     font-size: 0.85rem;
     display: flex;
     align-items: center;
@@ -159,93 +137,84 @@ textarea:focus {
 
 /* Candidate Overview Hero Card */
 .candidate-hero-card {
-    background: #0f172a;
-    border: 1px solid #1e293b;
-    border-radius: 14px;
-    padding: 1.5rem 1.8rem;
+    background: #18181B;
+    border: 1px solid #3F3F46;
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+    height: 100%;
 }
 
 .candidate-name-text {
-    font-size: 1.85rem;
-    font-weight: 800;
-    color: #f8fafc;
-    margin: 0.2rem 0 0.4rem 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #FAFAFA;
+    margin: 0.25rem 0 0.5rem 0;
     line-height: 1.2;
 }
 
 .candidate-tagline {
-    color: #94a3b8;
-    font-size: 0.9rem;
+    color: #A1A1AA;
+    font-size: 0.85rem;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
     flex-wrap: wrap;
 }
 
-.exp-badge-met {
-    background: rgba(16, 185, 129, 0.12);
-    border: 1px solid rgba(16, 185, 129, 0.3);
-    color: #34d399;
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 0.82rem;
-    font-weight: 600;
-    display: inline-flex;
+.candidate-tagline span {
+    display: flex;
     align-items: center;
-    gap: 5px;
+}
+
+.exp-badge-met {
+    color: #34D399;
+    font-weight: 500;
 }
 
 .exp-badge-unmet {
-    background: rgba(244, 63, 94, 0.12);
-    border: 1px solid rgba(244, 63, 94, 0.3);
-    color: #fb7185;
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 0.82rem;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
+    color: #F87171;
+    font-weight: 500;
 }
 
 /* Score Card */
 .score-hero-box {
-    background: #0f172a;
-    border: 1px solid #1e293b;
-    border-radius: 14px;
+    background: #18181B;
+    border: 1px solid #3F3F46;
+    border-radius: 8px;
     padding: 1.5rem;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.score-hero-number {
-    font-size: 3.4rem;
-    font-weight: 900;
-    line-height: 1;
-    margin-bottom: 0.35rem;
+    height: 100%;
 }
 
 .score-hero-label {
-    color: #94a3b8;
+    color: #A1A1AA;
     font-size: 0.75rem;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+}
+
+.score-hero-number {
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1;
 }
 
 /* Analysis Cards */
 .analysis-card {
-    background: #0f172a;
-    border: 1px solid #1e293b;
-    border-radius: 14px;
-    padding: 1.4rem 1.5rem;
+    background: #18181B;
+    border: 1px solid #3F3F46;
+    border-radius: 8px;
+    padding: 1.5rem;
     height: 100%;
     box-sizing: border-box;
     display: flex;
@@ -255,169 +224,117 @@ textarea:focus {
 .card-header-row {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
 }
 
 .card-title-text {
-    font-size: 1.08rem;
-    font-weight: 700;
-    color: #f8fafc;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #FAFAFA;
     margin: 0;
 }
 
 .card-desc-text {
-    color: #64748b;
+    color: #A1A1AA;
     font-size: 0.82rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
     line-height: 1.4;
 }
 
-/* Card Themes */
-.card-strengths {
-    border-top: 3px solid #10b981;
-}
-
-.card-weaknesses {
-    border-top: 3px solid #f43f5e;
-}
-
-.card-improvements {
-    border-top: 3px solid #06b6d4;
-}
-
-.card-verdict {
-    border-top: 3px solid #6366f1;
-}
-
-/* Bullet Items */
+/* Structural Bullet Items */
 .analysis-item-row {
     display: flex;
     align-items: flex-start;
     gap: 10px;
     margin-bottom: 0.75rem;
     font-size: 0.88rem;
-    color: #cbd5e1;
+    color: #D4D4D8;
     line-height: 1.5;
 }
 
-.bullet-icon-emerald {
-    color: #10b981;
-    font-size: 0.95rem;
+.bullet-icon {
+    font-size: 1rem;
     flex-shrink: 0;
-    margin-top: 2px;
+    margin-top: 0px;
+    font-weight: 700;
 }
 
-.bullet-icon-rose {
-    color: #f43f5e;
-    font-size: 0.95rem;
-    flex-shrink: 0;
-    margin-top: 2px;
-}
-
-.bullet-icon-cyan {
-    color: #06b6d4;
-    font-size: 0.95rem;
-    flex-shrink: 0;
-    margin-top: 2px;
-}
+.bullet-pos { color: #10B981; }
+.bullet-neg { color: #EF4444; }
+.bullet-neu { color: #3B82F6; }
 
 /* Verdict Box */
 .verdict-container {
-    background: linear-gradient(180deg, #111827 0%, #0f172a 100%);
-    border: 1px solid #1e293b;
-    border-left: 4px solid #6366f1;
-    border-radius: 12px;
-    padding: 1.4rem 1.6rem;
-    margin-bottom: 1.25rem;
+    background: #18181B;
+    border: 1px solid #3F3F46;
+    border-left: 3px solid #3B82F6;
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .verdict-badge {
-    color: #818cf8;
+    color: #93C5FD;
     font-size: 0.75rem;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 0.4rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
 }
 
 .verdict-content {
-    color: #e2e8f0;
+    color: #FAFAFA;
     font-size: 0.95rem;
-    line-height: 1.65;
+    line-height: 1.6;
 }
 
 /* Skills Chips */
 .skills-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 0.3rem;
+    gap: 8px;
 }
 
 .chip-match {
-    background: rgba(16, 185, 129, 0.1);
-    border: 1px solid rgba(16, 185, 129, 0.25);
-    color: #6ee7b7;
-    font-size: 0.8rem;
+    background: #064E3B;
+    border: 1px solid #047857;
+    color: #A7F3D0;
+    font-size: 0.75rem;
     font-weight: 500;
-    padding: 5px 10px;
-    border-radius: 6px;
+    padding: 4px 10px;
+    border-radius: 4px;
 }
 
 .chip-missing {
-    background: rgba(245, 158, 11, 0.1);
-    border: 1px solid rgba(245, 158, 11, 0.25);
-    color: #fcd34d;
-    font-size: 0.8rem;
+    background: #7F1D1D;
+    border: 1px solid #B91C1C;
+    color: #FECACA;
+    font-size: 0.75rem;
     font-weight: 500;
-    padding: 5px 10px;
-    border-radius: 6px;
+    padding: 4px 10px;
+    border-radius: 4px;
 }
 
 .chip-empty {
-    color: #64748b;
-    font-size: 0.82rem;
+    color: #71717A;
+    font-size: 0.85rem;
     font-style: italic;
 }
 
-/* Metric Pill */
-.metric-pill {
-    background: #1e293b;
-    border-radius: 8px;
-    padding: 0.8rem 1rem;
-    text-align: center;
-}
-
-.metric-pill-val {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #f8fafc;
-}
-
-.metric-pill-lbl {
-    font-size: 0.72rem;
-    color: #94a3b8;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-top: 2px;
-}
-
-/* Clean Expander */
+/* Clean Expander overrides */
 [data-testid="stExpander"] {
-    background: #0f172a !important;
-    border: 1px solid #1e293b !important;
-    border-radius: 10px !important;
+    border: 1px solid #3F3F46 !important;
+    border-radius: 6px !important;
 }
 
 /* Footer */
 .app-footer {
     text-align: center;
-    color: #475569;
-    font-size: 0.78rem;
+    color: #71717A;
+    font-size: 0.75rem;
     margin-top: 4rem;
     padding-top: 1.5rem;
-    border-top: 1px solid #1e293b;
+    border-top: 1px solid #3F3F46;
 }
 </style>
 """,
@@ -437,12 +354,10 @@ def extract_field(details: dict[str, Any], *keys: str, default: Any = None) -> A
     if not isinstance(details, dict):
         return default
 
-    # 1. Exact match search
     for key in keys:
         if key in details and details[key] is not None:
             return details[key]
 
-    # 2. Case and underscore insensitive search
     normalized_map = {
         str(k).lower().replace(" ", "_").replace("-", ""): v
         for k, v in details.items()
@@ -506,10 +421,10 @@ def get_score_color(score: float) -> str:
     Returns appropriate color hex according to match score.
     """
     if score >= 75:
-        return "#10b981"  # Emerald
+        return "#34D399"  # Emerald
     if score >= 50:
-        return "#f59e0b"  # Amber
-    return "#f43f5e"  # Rose
+        return "#FBBF24"  # Amber
+    return "#F87171"  # Red
 
 
 # =========================================================
@@ -519,11 +434,11 @@ def get_score_color(score: float) -> str:
 st.markdown(
     """
 <div class="hero-container">
-    <div class="hero-badge">⚡ AI-Powered Fit Engine</div>
-    <h1 class="hero-title">Resume & Job Fit Analyzer</h1>
+    <div class="hero-badge">Evaluation Engine</div>
+    <h1 class="hero-title">AI Resume & Job Fit Analyzer</h1>
     <p class="hero-subtitle">
-        Intelligent candidate evaluation against target job requirements.
-        Generates in-depth analysis on Strengths, Weaknesses, Areas to Improve, and Final Verdict.
+        Automated candidate assessment against target requirements. 
+        Generates structured feedback on alignment, gaps, and recommendations.
     </p>
 </div>
 """,
@@ -535,23 +450,23 @@ st.markdown(
 # INPUT SECTION
 # =========================================================
 
-col_jd, col_resume = st.columns([1.1, 0.9], gap="large")
+col_jd, col_resume = st.columns([1, 1], gap="large")
 
 with col_jd:
     st.markdown(
-        '<div class="section-title">📋 1. Job Description</div>',
+        '<div class="section-title">1. Job Description</div>',
         unsafe_allow_html=True,
     )
     job_description = st.text_area(
         "Job Description Input",
         height=280,
-        placeholder="Paste target job requirements, qualifications, and role responsibilities here...",
+        placeholder="Paste target job requirements, qualifications, and role responsibilities...",
         label_visibility="collapsed",
     )
 
 with col_resume:
     st.markdown(
-        '<div class="section-title">📄 2. Candidate Resume (PDF)</div>',
+        '<div class="section-title">2. Candidate Resume</div>',
         unsafe_allow_html=True,
     )
     resume_file = st.file_uploader(
@@ -566,8 +481,8 @@ with col_resume:
         st.markdown(
             f"""
             <div class="file-info-badge">
-                <span>📄 <strong>{resume_file.name}</strong></span>
-                <span style="color:#94a3b8;">{file_size_kb:.1f} KB</span>
+                <span style="font-weight: 500;">{resume_file.name}</span>
+                <span style="color:#A1A1AA;">{file_size_kb:.1f} KB</span>
             </div>
             """,
             unsafe_allow_html=True,
@@ -576,9 +491,9 @@ with col_resume:
 st.write("")
 
 # Action Button
-btn_col1, btn_col2, btn_col3 = st.columns([1, 2, 1])
+btn_col1, btn_col2, btn_col3 = st.columns([1.5, 2, 1.5])
 with btn_col2:
-    analyze_clicked = st.button("🚀 Analyze Candidate Fit", use_container_width=True)
+    analyze_clicked = st.button("Analyze Candidate Fit", use_container_width=True)
 
 
 # =========================================================
@@ -587,14 +502,13 @@ with btn_col2:
 
 if analyze_clicked:
     if not job_description.strip():
-        st.warning("⚠️ Please provide a job description before analyzing.")
+        st.warning("Please provide a job description before analyzing.")
     elif resume_file is None:
-        st.warning("⚠️ Please upload a PDF resume to proceed.")
+        st.warning("Please upload a PDF resume to proceed.")
     else:
-        # Safe temporary file management
         temp_pdf_path = None
         try:
-            with st.spinner("Analyzing candidate profile and requirements..."):
+            with st.spinner("Processing candidate profile and requirements..."):
                 with tempfile.NamedTemporaryFile(
                     delete=False, suffix=".pdf"
                 ) as temp_pdf:
@@ -613,7 +527,7 @@ if analyze_clicked:
                 st.session_state["file_name"] = resume_file.name
 
         except Exception as err:
-            st.error(f"❌ Analysis failed: {err}")
+            st.error(f"Analysis failed: {err}")
         finally:
             if temp_pdf_path and os.path.exists(temp_pdf_path):
                 try:
@@ -631,10 +545,6 @@ if "match_result" in st.session_state and "analyzed_resume" in st.session_state:
     match_result = st.session_state["match_result"]
     details = match_result.details if hasattr(match_result, "details") else {}
     score_val = float(getattr(match_result, "score", 0.0))
-
-    # ---------------------------------------------------------
-    # DATA EXTRACTION WITH RESILIENT FALLBACKS
-    # ---------------------------------------------------------
 
     candidate_name = (
         getattr(parsed_resume, "name", None)
@@ -676,7 +586,6 @@ if "match_result" in st.session_state and "analyzed_resume" in st.session_state:
         default=None,
     )
 
-    # Strengths Extraction
     strengths = normalize_items(
         extract_field(
             details,
@@ -689,19 +598,8 @@ if "match_result" in st.session_state and "analyzed_resume" in st.session_state:
         )
     )
     if not strengths and matching_skills:
-        strengths = [
-            f"Demonstrates relevant proficiency in {', '.join(matching_skills[:3])}."
-        ]
-        if getattr(parsed_resume, "Total_exp", None):
-            strengths.append(
-                f"Brings {parsed_resume.Total_exp} of professional background."
-            )
-        if getattr(parsed_resume, "projects", None):
-            strengths.append(
-                f"Possesses hands-on project experience across {len(parsed_resume.projects)} documented initiatives."
-            )
+        strengths = [f"Demonstrates relevant proficiency in {', '.join(matching_skills[:3])}."]
 
-    # Weaknesses Extraction
     weaknesses = normalize_items(
         extract_field(
             details,
@@ -715,13 +613,8 @@ if "match_result" in st.session_state and "analyzed_resume" in st.session_state:
         )
     )
     if not weaknesses and missing_skills:
-        weaknesses = [
-            f"Missing required technical competencies in {', '.join(missing_skills[:3])}."
-        ]
-        if experience_met is False:
-            weaknesses.append("Does not meet stated minimum years of experience.")
+        weaknesses = [f"Missing required technical competencies in {', '.join(missing_skills[:3])}."]
 
-    # Areas to Improve Extraction
     areas_to_improve = normalize_items(
         extract_field(
             details,
@@ -730,24 +623,12 @@ if "match_result" in st.session_state and "analyzed_resume" in st.session_state:
             "areas_for_improvement",
             "improvement_areas",
             "recommendations",
-            "suggestions",
-            "how_to_improve",
             default=[],
         )
     )
-    if not areas_to_improve:
-        if missing_skills:
-            areas_to_improve.append(
-                f"Gain verified proficiency in {', '.join(missing_skills[:2])} via certifications or production code."
-            )
-        areas_to_improve.append(
-            "Emphasize measurable business impact and scale metrics in resume project descriptions."
-        )
-        areas_to_improve.append(
-            "Align resume terminology more directly with target job responsibilities."
-        )
+    if not areas_to_improve and missing_skills:
+        areas_to_improve.append("Align resume terminology more directly with target job responsibilities.")
 
-    # Final Verdict Extraction
     final_verdict = extract_field(
         details,
         "final_verdict",
@@ -765,16 +646,15 @@ if "match_result" in st.session_state and "analyzed_resume" in st.session_state:
     # 1. CANDIDATE PROFILE & SCORE OVERVIEW
     # ---------------------------------------------------------
 
-    overview_col1, overview_col2 = st.columns([1.8, 0.9], gap="medium")
+    overview_col1, overview_col2 = st.columns([2.5, 1], gap="medium")
 
     with overview_col1:
-        # Experience met badge formatting
         if experience_met is True:
-            exp_badge = '<span class="exp-badge-met">✓ Experience Requirement Met</span>'
+            exp_badge = '<span class="exp-badge-met">Experience Met</span>'
         elif experience_met is False:
-            exp_badge = '<span class="exp-badge-unmet">✕ Experience Requirement Not Met</span>'
+            exp_badge = '<span class="exp-badge-unmet">Experience Not Met</span>'
         else:
-            exp_badge = '<span style="color:#94a3b8; font-size:0.82rem;">Experience requirement: Unspecified</span>'
+            exp_badge = '<span style="color:#A1A1AA;">Experience Unspecified</span>'
 
         total_exp_str = getattr(parsed_resume, "Total_exp", None) or "Not specified"
         email_str = getattr(parsed_resume, "email", None) or ""
@@ -783,11 +663,12 @@ if "match_result" in st.session_state and "analyzed_resume" in st.session_state:
             f"""
             <div class="candidate-hero-card">
                 <div>
-                    <div class="section-title">Candidate Evaluation</div>
+                    <div style="color: #A1A1AA; font-size: 0.75rem; text-transform: uppercase; font-weight: 600; margin-bottom: 0.25rem;">Evaluation Profile</div>
                     <div class="candidate-name-text">{candidate_name}</div>
                     <div class="candidate-tagline">
-                        <span>💼 <strong>Total Exp:</strong> {total_exp_str}</span>
-                        {f'<span>✉️ {email_str}</span>' if email_str else ''}
+                        <span>Exp: {total_exp_str}</span>
+                        {f'<span>{email_str}</span>' if email_str else ''}
+                        <span>•</span>
                         {exp_badge}
                     </div>
                 </div>
@@ -801,27 +682,23 @@ if "match_result" in st.session_state and "analyzed_resume" in st.session_state:
         st.markdown(
             f"""
             <div class="score-hero-box">
+                <div class="score-hero-label">Overall Match</div>
                 <div class="score-hero-number" style="color: {score_color};">
                     {score_val:.0f}%
                 </div>
-                <div class="score-hero-label">Overall Match Score</div>
             </div>
             """,
             unsafe_allow_html=True,
         )
 
-    # Match Progress Bar
-    st.progress(min(max(score_val / 100.0, 0.0), 1.0))
-    st.write("")
-
     # ---------------------------------------------------------
     # 2. FINAL VERDICT BANNER
     # ---------------------------------------------------------
-
+    st.write("")
     st.markdown(
         f"""
         <div class="verdict-container">
-            <div class="verdict-badge">🎯 Executive Recruiter Verdict</div>
+            <div class="verdict-badge">Executive Summary</div>
             <div class="verdict-content">{final_verdict}</div>
         </div>
         """,
@@ -835,69 +712,63 @@ if "match_result" in st.session_state and "analyzed_resume" in st.session_state:
     # ---------------------------------------------------------
 
     st.markdown(
-        '<div class="section-title">📊 Detailed Fit Analysis</div>',
+        '<div class="section-title">Detailed Fit Analysis</div>',
         unsafe_allow_html=True,
     )
 
     card_col1, card_col2, card_col3 = st.columns(3, gap="medium")
 
-    # ---- STRENGTHS CARD ----
     with card_col1:
         strengths_html = "".join(
-            f'<div class="analysis-item-row"><span class="bullet-icon-emerald">✓</span><span>{item}</span></div>'
+            f'<div class="analysis-item-row"><span class="bullet-icon bullet-pos">+</span><span>{item}</span></div>'
             for item in strengths
         ) or '<div class="chip-empty">No major strengths highlighted.</div>'
 
         st.markdown(
             f"""
-            <div class="analysis-card card-strengths">
+            <div class="analysis-card">
                 <div class="card-header-row">
-                    <span style="font-size:1.2rem;">✨</span>
                     <h3 class="card-title-text">Strengths</h3>
                 </div>
-                <div class="card-desc-text">Key candidate advantages and strong alignments.</div>
+                <div class="card-desc-text">Key candidate advantages and alignments.</div>
                 <div>{strengths_html}</div>
             </div>
             """,
             unsafe_allow_html=True,
         )
 
-    # ---- WEAKNESSES CARD ----
     with card_col2:
         weaknesses_html = "".join(
-            f'<div class="analysis-item-row"><span class="bullet-icon-rose">✕</span><span>{item}</span></div>'
+            f'<div class="analysis-item-row"><span class="bullet-icon bullet-neg">-</span><span>{item}</span></div>'
             for item in weaknesses
         ) or '<div class="chip-empty">No critical weaknesses identified.</div>'
 
         st.markdown(
             f"""
-            <div class="analysis-card card-weaknesses">
+            <div class="analysis-card">
                 <div class="card-header-row">
-                    <span style="font-size:1.2rem;">⚠️</span>
                     <h3 class="card-title-text">Weaknesses</h3>
                 </div>
-                <div class="card-desc-text">Gaps, missing skills, and qualification risks.</div>
+                <div class="card-desc-text">Gaps and qualification risks.</div>
                 <div>{weaknesses_html}</div>
             </div>
             """,
             unsafe_allow_html=True,
         )
 
-    # ---- AREAS TO IMPROVE CARD ----
     with card_col3:
         improvements_html = "".join(
-            f'<div class="analysis-item-row"><span class="bullet-icon-cyan">💡</span><span>{item}</span></div>'
+            f'<div class="analysis-item-row"><span class="bullet-icon bullet-neu">→</span><span>{item}</span></div>'
             for item in areas_to_improve
         ) or '<div class="chip-empty">No improvement areas specified.</div>'
 
         st.markdown(
             f"""
-            <div class="analysis-card card-improvements">
+            <div class="analysis-card">
                 <div class="card-header-row">
-                    <span style="font-size:1.2rem;">📈</span>
-                    <h3 class="card-title-text">Areas to Improve</h3>
+                    <h3 class="card-title-text">Recommendations</h3>
                 </div>
-                <div class="card-desc-text">Actionable recommendations to bridge gaps.</div>
+                <div class="card-desc-text">Actionable steps to bridge current gaps.</div>
                 <div>{improvements_html}</div>
             </div>
             """,
@@ -908,11 +779,11 @@ if "match_result" in st.session_state and "analyzed_resume" in st.session_state:
     st.write("")
 
     # ---------------------------------------------------------
-    # 4. SKILLS BREAKDOWN (MATCHING VS MISSING)
+    # 4. SKILLS BREAKDOWN
     # ---------------------------------------------------------
 
     st.markdown(
-        '<div class="section-title">🧩 Technical & Domain Skills Breakdown</div>',
+        '<div class="section-title">Technical Competency Assessment</div>',
         unsafe_allow_html=True,
     )
 
@@ -921,9 +792,8 @@ if "match_result" in st.session_state and "analyzed_resume" in st.session_state:
     with skill_col_left:
         st.markdown(
             f"""
-            <div class="analysis-card">
+            <div class="analysis-card" style="padding-bottom: 2rem;">
                 <div class="card-header-row">
-                    <span style="font-size:1.1rem;">✅</span>
                     <h3 class="card-title-text">Matching Skills ({len(matching_skills)})</h3>
                 </div>
                 <div class="card-desc-text">Skills present in resume that match job requirements.</div>
@@ -936,10 +806,9 @@ if "match_result" in st.session_state and "analyzed_resume" in st.session_state:
     with skill_col_right:
         st.markdown(
             f"""
-            <div class="analysis-card">
+            <div class="analysis-card" style="padding-bottom: 2rem;">
                 <div class="card-header-row">
-                    <span style="font-size:1.1rem;">🔍</span>
-                    <h3 class="card-title-text">Missing Important Skills ({len(missing_skills)})</h3>
+                    <h3 class="card-title-text">Missing Required Skills ({len(missing_skills)})</h3>
                 </div>
                 <div class="card-desc-text">Key job requirements not evidenced in the resume.</div>
                 {render_chips(missing_skills, missing=True)}
@@ -949,20 +818,19 @@ if "match_result" in st.session_state and "analyzed_resume" in st.session_state:
         )
 
     st.write("")
+    st.write("")
 
     # ---------------------------------------------------------
     # 5. EXPANDABLE TECHNICAL DETAILS & EXPORT
     # ---------------------------------------------------------
 
-    with st.expander("🔍 View Extracted Candidate Profile"):
+    with st.expander("View Extracted Candidate Profile Data"):
         p_col1, p_col2 = st.columns(2)
         with p_col1:
             st.markdown(f"**Name:** {getattr(parsed_resume, 'name', 'N/A')}")
             st.markdown(f"**Email:** {getattr(parsed_resume, 'email', 'N/A')}")
             st.markdown(f"**Phone:** {getattr(parsed_resume, 'phone', 'N/A')}")
-            st.markdown(
-                f"**Total Experience:** {getattr(parsed_resume, 'Total_exp', 'N/A')}"
-            )
+            st.markdown(f"**Total Experience:** {getattr(parsed_resume, 'Total_exp', 'N/A')}")
             st.markdown("**Education:**")
             for edu in getattr(parsed_resume, "education", []):
                 st.markdown(f"- {edu}")
@@ -976,7 +844,7 @@ if "match_result" in st.session_state and "analyzed_resume" in st.session_state:
             for cert in getattr(parsed_resume, "certifications", []):
                 st.markdown(f"- {cert}")
 
-    with st.expander("📊 View Raw Evaluation Payload"):
+    with st.expander("View Raw JSON Evaluation Payload"):
         st.json(details)
 
     # Export Report
@@ -986,7 +854,7 @@ if "match_result" in st.session_state and "analyzed_resume" in st.session_state:
 **Overall Match Score:** {score_val:.0f}%
 **Experience Requirement Met:** {'Yes' if experience_met is True else 'No' if experience_met is False else 'Unspecified'}
 
-## Executive Verdict
+## Executive Summary
 {final_verdict}
 
 ## Strengths
@@ -995,7 +863,7 @@ if "match_result" in st.session_state and "analyzed_resume" in st.session_state:
 ## Weaknesses
 {chr(10).join(f"- {w}" for w in weaknesses)}
 
-## Areas to Improve
+## Recommendations
 {chr(10).join(f"- {a}" for a in areas_to_improve)}
 
 ## Matching Skills
@@ -1008,7 +876,7 @@ if "match_result" in st.session_state and "analyzed_resume" in st.session_state:
     exp_col1, exp_col2, exp_col3 = st.columns([1, 1, 1])
     with exp_col2:
         st.download_button(
-            label="📥 Download Analysis Report (Markdown)",
+            label="Download Analysis Report (.md)",
             data=report_text,
             file_name=f"fit_analysis_{candidate_name.lower().replace(' ', '_')}.md",
             mime="text/markdown",
@@ -1023,7 +891,7 @@ if "match_result" in st.session_state and "analyzed_resume" in st.session_state:
 st.markdown(
     """
 <div class="app-footer">
-    AI Resume & Candidate Fit Analyzer • Built with Streamlit & Groq
+    AI Resume & Candidate Fit Analyzer
 </div>
 """,
     unsafe_allow_html=True,
