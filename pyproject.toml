@@ -1,0 +1,23 @@
+[project]
+name = "day5"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "AshraFSk7819", email = "ashraf.sk0308@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "dotenv>=0.9.9",
+    "groq>=1.7.0",
+    "pydantic>=2.13.5",
+    "pymupdf>=1.28.2",
+    "streamlit>=1.65.0",
+]
+
+[project.scripts]
+day5 = "day5:main"
+
+[build-system]
+requires = ["uv_build>=0.12.23,<0.13.0"]
+build-backend = "uv_build"
